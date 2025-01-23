@@ -1,0 +1,15 @@
+# Cross-Origin Resource Sharing (CORS)
+
+- it is a mechanism that allows a web page to access resources from a different domain.
+- It's an extension of the same-origin policy, which restricts access to resources from different domains by default.
+
+=> To allow this in django we need to install django-cors-headers
+
+=> and enable cors in settings.py file with following configurations
+
+1. CORS_ALLOW_ORIGINS = [
+    'http://127.0.0.1:5173/',
+    'http://127.0.0.1:6700/'
+]
+
+2. CORS_ALLOW_ALL_ORIGINS = bool
