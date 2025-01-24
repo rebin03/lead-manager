@@ -1,0 +1,41 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    background-color: #ffffff; /* White card background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px;
+}
+
+.card h2 {
+    color: #007bff; /* Bootstrap primary color */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.table thead {
+    background-color: #007bff;
+    color: #ffffff;
+}
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
+}
+.btn-action {
+    padding: 5px 10px;
+}
+
+/* vertical divder style */
+.table td {
+    position: relative; /* Enable pseudo-elements inside cells */
+}
+.table td:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 12.5%; /* Start at 12.5% to leave space at top */
+    bottom: 12.5%; /* End at 87.5% to leave space at bottom */
+    right: 0;
+    width: 1px;
+    background-color: #dee2e6; /* Light gray color */
+}
