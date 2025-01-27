@@ -5,8 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 function LeadList() {
   const [leads, setLeads] = useState();
 
-  const navigate = useNavigate()
-
   useEffect(() => {
     fetchAllLeadsApi();
   }, []);
@@ -24,10 +22,6 @@ function LeadList() {
     if(response.status >= 200 && response.status < 300){
         fetchAllLeadsApi()
     }
-  }
-
-  function leadListNavigate(){
-    navigate("/leadlist")
   }
 
   return (
@@ -85,13 +79,12 @@ function LeadList() {
                             <td>{l.status}</td>
                             <td>
                                 <div className="d-flex justify-content-around gap-2">
-                                <a
-                                    href="#"
+                                <Link
+                                    to={`/leadedit/${l.id}`}
                                     className="btn btn-success btn-action"
-                                    title="Edit"
                                 >
                                     <i className="bi bi-pencil"></i>
-                                </a>
+                                </Link>
                                 <button
                                     className="btn btn-danger btn-action"
                                     title="Delete"

@@ -3,6 +3,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LeadCreate from './pages/LeadCreate'
 import LeadList from './pages/LeadList'
+import LeadEdit from './pages/LeadEdit'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path='leadcreate' element={<LeadCreate/>}/>
         <Route path='leadlist' element={<LeadList/>}/>
+        <Route path='leadedit/:id' element={<LeadEdit/>}/>
       </Routes>
     </BrowserRouter>
   )
