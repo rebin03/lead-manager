@@ -23,7 +23,7 @@ class LeadListCreateView(CreateAPIView,ListAPIView):
         
         if filter_text:
             search_value = filter_text.get('search_text')
-            qs = qs.filter(Q(name__contains=search_value)|Q(email__contains=search_value))
+            qs = qs.filter(Q(name__contains=search_value) | Q(email__contains=search_value) | Q(mobile__contains=search_value))
             
         return qs
 

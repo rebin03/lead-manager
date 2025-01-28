@@ -24,6 +24,15 @@ function LeadList() {
     }
   }
 
+  async function handleChange(event) {
+    let searchValue = event.target.value
+    
+    let response = await axios.get(`http://127.0.0.1:8000/api/leads?search_text=${searchValue}`)
+    if(response.status >= 200 && response.status < 300){
+      setLeads(response.data)
+    }
+  }
+
   return (
     <div>
       <div className="container mt-5">
@@ -36,6 +45,7 @@ function LeadList() {
                 className="form-control"
                 id="searchBar"
                 placeholder="Search leads by name, email, or mobile"
+                onChange={handleChange}
               />
             </div>
             <div className="col-md-6 text-end">
