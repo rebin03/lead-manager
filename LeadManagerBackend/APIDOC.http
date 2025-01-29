@@ -7,14 +7,25 @@
 # data
 
 ###
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+###
 
 GET http://127.0.0.1:8000/api/leads/
+Authorization: Token 4863ccd64e0e4fe7664a1a899bda2c6ae0aeceef
 
 # api for adding a new lead
 ###
 
 POST http://127.0.0.1:8000/api/leads/
 Content-Type: application/json
+Authorization: Token 4863ccd64e0e4fe7664a1a899bda2c6ae0aeceef
 
 {
   "name": "shan",
@@ -34,13 +45,14 @@ Content-Type: application/json
 ###
 
 GET http://127.0.0.1:8000/api/leads/4/
+Authorization: Token 4863ccd64e0e4fe7664a1a899bda2c6ae0aeceef
 
 
 # api call for updating lead
 ###
 PUT http://127.0.0.1:8000/api/leads/4/
 Content-Type: application/json
-
+Authorization: Token 4863ccd64e0e4fe7664a1a899bda2c6ae0aeceef
 
 {
   "name": "shan",
@@ -61,3 +73,4 @@ Content-Type: application/json
 ###
 
 DELETE http://127.0.0.1:8000/api/leads/3/
+Authorization: Token 4863ccd64e0e4fe7664a1a899bda2c6ae0aeceef

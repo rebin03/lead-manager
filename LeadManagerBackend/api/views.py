@@ -1,19 +1,22 @@
 from django.shortcuts import render
+from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView,UpdateAPIView,DestroyAPIView
+from api.serializers import LeadSerializer
+from api.models import Lead
+from django.db.models import Q
+from rest_framework import authentication, permissions
 
 # Create your views here.
 
 
 # lead Create,List,Retrieve,Update,Delete
 
-from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView,UpdateAPIView,DestroyAPIView
-from api.serializers import LeadSerializer
-from api.models import Lead
-from django.db.models import Q
 
 class LeadListCreateView(CreateAPIView,ListAPIView):
+    
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
 
     serializer_class=LeadSerializer
-
     queryset=Lead.objects.all()
     
     def get_queryset(self):
@@ -29,7 +32,9 @@ class LeadListCreateView(CreateAPIView,ListAPIView):
 
 
 class LeadRetrieveUpdateDestroyView(RetrieveAPIView,UpdateAPIView,DestroyAPIView):
+    
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser]
 
     serializer_class=LeadSerializer
-
     queryset=Lead.objects.all()
