@@ -23,7 +23,11 @@ function LeadEdit() {
   useEffect(() => {leadRetriveApi()}, [id])
   
   async function leadRetriveApi(){
-    let response = await axios.get(`http://127.0.0.1:8000/api/leads/${id}/`)
+
+    let token = localStorage.getItem("token")
+    let headers = {"Authorization": token}
+
+    let response = await axios.get(`http://127.0.0.1:8000/api/leads/${id}/`, {headers})
     if(response.status >= 200 && response.status < 300){
         setLead(response.data)
     }
@@ -31,7 +35,11 @@ function LeadEdit() {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    let response = await axios.put(`http://127.0.0.1:8000/api/leads/${id}/`, lead)
+
+    let token = localStorage.getItem("token")
+    let headers = {"Authorization": token}
+
+    let response = await axios.put(`http://127.0.0.1:8000/api/leads/${id}/`, lead, {headers})
     if(response.status >= 200 && response.status < 300){
         navigate('/leadlist')
     }

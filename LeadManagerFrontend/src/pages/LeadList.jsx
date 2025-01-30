@@ -10,7 +10,11 @@ function LeadList() {
   }, []);
 
   async function fetchAllLeadsApi() {
-    let response = await axios.get("http://127.0.0.1:8000/api/leads/");
+
+    let token = localStorage.getItem("token")
+    let headers = {"Authorization": token}
+
+    let response = await axios.get("http://127.0.0.1:8000/api/leads/", {headers});
     if (response.status >= 200 && response.status < 300) {
       console.log(response.data);
       setLeads(response.data);
@@ -18,16 +22,24 @@ function LeadList() {
   }
 
   async function  leadDeleteApi(id) {
-    let response = await axios.delete(`http://127.0.0.1:8000/api/leads/${id}/`)
+
+    let token = localStorage.getItem("token")
+    let headers = {"Authorization": token}
+
+    let response = await axios.delete(`http://127.0.0.1:8000/api/leads/${id}/`, {headers})
     if(response.status >= 200 && response.status < 300){
         fetchAllLeadsApi()
     }
   }
 
   async function handleChange(event) {
+
+    let token = localStorage.getItem("token")
+    let headers = {"Authorization": token}
+
     let searchValue = event.target.value
     
-    let response = await axios.get(`http://127.0.0.1:8000/api/leads?search_text=${searchValue}`)
+    let response = await axios.get(`http://127.0.0.1:8000/api/leads?search_text=${searchValue}`, {headers})
     if(response.status >= 200 && response.status < 300){
       setLeads(response.data)
     }

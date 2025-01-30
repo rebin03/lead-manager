@@ -21,9 +21,11 @@ function LeadCreate() {
 
   async function handleSubmit(event){
     event.preventDefault()
-    console.log(lead)
 
-    let response = await axios.post("http://127.0.0.1:8000/api/leads/", lead)
+    let token = localStorage.getItem("token")
+    let headers = {"Authorization": token}
+
+    let response = await axios.post("http://127.0.0.1:8000/api/leads/", lead, {headers})
 
     if(response.status >= 200 && response.status < 300){
       console.log("Lead Created")
